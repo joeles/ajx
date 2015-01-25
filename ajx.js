@@ -74,7 +74,7 @@
     return query.join('&');
   }
 
-  window.xhr = {
+  window.ajx = {
     get: get,
     post: post
   };
