@@ -21,7 +21,6 @@
     xhr.open(method, url, options.async);
 
     xhr.onreadystatechange = function() {
-
       if (xhr.readyState == XMLHttpRequest.DONE) {
 
         var response = xhr.responseText;
@@ -46,7 +45,6 @@
   }
 
   function get(url, data, options) {
-
     data = build_query(data);
 
     if (data) {
@@ -57,14 +55,11 @@
   }
 
   function post(url, data, options) {
-
     data = build_query(data);
-
     send('POST', url, data, options);
   }
 
   function build_query(data) {
-
     var query = [];
 
     for (var key in data) {
