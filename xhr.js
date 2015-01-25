@@ -1,7 +1,7 @@
 
-;"use strict";
+;(function(){
 
-var xhr = (function(){
+  "use strict";
 
   function send(method, url, data, opts) {
 
@@ -13,7 +13,9 @@ var xhr = (function(){
         };
 
     for (var i in opts) {
-      options[i] = opts[i];
+      if (options.hasOwnProperty(i)) {
+        options[i] = opts[i];
+      }
     }
 
     xhr.open(method, url, options.async);
@@ -40,8 +42,8 @@ var xhr = (function(){
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     }
 
-    xhr.send(data)
-  };
+    xhr.send(data);
+  }
 
   function get(url, data, options) {
 
@@ -51,15 +53,15 @@ var xhr = (function(){
       url += '?' + data;
     }
 
-    send('GET', url, null, options)
+    send('GET', url, null, options);
   }
 
   function post(url, data, options) {
 
-    data = build_query(data)
+    data = build_query(data);
 
-    send('POST', url, data, options)
-  };
+    send('POST', url, data, options);
+  }
 
   function build_query(data) {
 
@@ -70,12 +72,11 @@ var xhr = (function(){
     }
 
     return query.join('&');
-  };
+  }
 
-  return {
+  window.xhr = {
     get: get,
     post: post
   };
 
 }());
-
